@@ -20,10 +20,23 @@ public class Target {
     @Column(name = "user_name")
     private String name;
 
-    @Column()
+    @Column(name = "user_surname")
     private String surname;
+
+    @Column(name = "email")
     private String emailAddress;
+
+    @Temporal(TemporalType.DATE)//This annotation marks for java.sql.Date class
+    @Column(name = "lastPurchase")
     private Date lastPurchaseDate;
+
+
+
+    @ElementCollection
+    @CollectionTable(name = "purchase_meta", joinColumns = @JoinColumn(name = "user_id"))
+    //These annotations mark the column as a new table. It creates new table in database called purchase_meta,
+    //adds two column that named user_id and purchase_meta, after that adds all list elements to purchase_meta table
+    @Column(name = "purchase_meta")
     private ArrayList<PurchaseCategory> purchaseMeta;
 
 
