@@ -1,6 +1,6 @@
 package com.service.model;
 
-import com.service.model.category.conc.PurchaseCategory;
+import com.service.util.enums.PurchaseMeta;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -36,11 +36,12 @@ public class Target {
     @CollectionTable(name = "purchase_meta", joinColumns = @JoinColumn(name = "user_id"))
     //These annotations mark the column as a new table. It creates new table in database called purchase_meta,
     //adds two column that named user_id and purchase_meta, after that adds all list elements to purchase_meta table
+    @Enumerated(EnumType.STRING)//It is an enum and should be stored as string
     @Column(name = "purchase_meta")
-    private ArrayList<PurchaseCategory> purchaseMeta;
+    private ArrayList<PurchaseMeta> purchaseMeta;
 
 
-    public Target(int id, String name, String surname, String emailAddress, Date lastPurchaseDate, ArrayList<PurchaseCategory> purchaseMeta) {
+    public Target(int id, String name, String surname, String emailAddress, Date lastPurchaseDate, ArrayList<PurchaseMeta> purchaseMeta) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -89,11 +90,11 @@ public class Target {
         this.lastPurchaseDate = lastPurchaseDate;
     }
 
-    public ArrayList<PurchaseCategory> getPurchaseMeta() {
+    public ArrayList<PurchaseMeta> getPurchaseMeta() {
         return purchaseMeta;
     }
 
-    public void setPurchaseMeta(ArrayList<PurchaseCategory> purchaseMeta) {
+    public void setPurchaseMeta(ArrayList<PurchaseMeta> purchaseMeta) {
         this.purchaseMeta = purchaseMeta;
     }
 }
