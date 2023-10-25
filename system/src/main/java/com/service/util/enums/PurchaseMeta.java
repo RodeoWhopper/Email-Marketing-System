@@ -1,6 +1,7 @@
-package com.service.model.enums;
+package com.service.util.enums;
 
 public enum PurchaseMeta {
     TECHNOLOGY,
     DRESSING
+    //There will be more
 }

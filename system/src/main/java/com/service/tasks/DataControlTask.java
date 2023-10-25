@@ -1,7 +1,7 @@
 package com.service.tasks;
 
 import com.service.model.Target;
-import com.service.model.enums.PurchaseMeta;
+import com.service.util.enums.PurchaseMeta;
 
 import java.util.ArrayList;
 
