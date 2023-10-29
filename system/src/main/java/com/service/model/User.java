@@ -10,7 +10,7 @@ import java.util.ArrayList;
 //We are categorize all targets to make better marketing that is why there is more than one category
 @Entity
 @Table(name = "users")
-public class Target {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,7 +41,7 @@ public class Target {
     private ArrayList<PurchaseMeta> purchaseMeta;
 
 
-    public Target(int id, String name, String surname, String emailAddress, Date lastPurchaseDate, ArrayList<PurchaseMeta> purchaseMeta) {
+    public User(int id, String name, String surname, String emailAddress, Date lastPurchaseDate, ArrayList<PurchaseMeta> purchaseMeta) {
         this.id = id;
         this.name = name;
         this.surname = surname;
