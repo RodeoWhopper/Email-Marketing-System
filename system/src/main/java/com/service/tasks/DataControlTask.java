@@ -1,22 +1,29 @@
 package com.service.tasks;
 
-import com.service.model.Target;
-import com.service.util.enums.PurchaseMeta;
+import com.service.manager.UserManager;
+import com.service.model.User;
+import com.service.util.UserUtil;
+import com.service.util.enums.Datum;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class DataControlTask implements Runnable {
 
+    private UserManager userManager;
+
     @Override
     public void run() {
-        //Data Access Codes
-        //Listeyi aldın
-        ArrayList<Target> targets = new ArrayList<>();
-        for(Target target: targets){
-            if(target.getPurchaseMeta().contains(PurchaseMeta.DRESSING)){
-                //send mail
-            }
-        }
+        List<User> userList = this.userManager.getAll(), fiveDays, thirtyDays;
+
+        fiveDays = userList.stream()
+                .filter(user -> UserUtil.checkForDate(user) == Datum.MORE_THAN_5)
+                .collect(Collectors.toList());
+
+        thirtyDays = userList.stream()
+                .filter(user -> UserUtil.checkForDate(user) == Datum.MORE_THAN_30)
+                .collect(Collectors.toList());
+
 
     }
 
