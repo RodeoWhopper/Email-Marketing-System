@@ -7,7 +7,7 @@ import org.hibernate.cfg.Configuration;
 
 public class SessionFactoryBuilder implements Builder<SessionFactory> {
     @Override
-    public SessionFactory build() throws InitializerException {
+    public SessionFactory build(String... args) throws InitializerException {
         try{
             Configuration config = new Configuration().configure("hibernate.cfg.xml");//Create a config with hibernate config
             return config.buildSessionFactory();//Build the factory and return it
