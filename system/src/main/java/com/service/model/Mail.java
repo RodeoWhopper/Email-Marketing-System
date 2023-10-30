@@ -8,6 +8,8 @@ public class Mail {
 
     private String smtpServerAddress;
 
+    private String smtpServerPort;
+
     private String mailContent;
 
     private String mailSubject;
@@ -15,7 +17,16 @@ public class Mail {
     public Mail(String receiverAddress, String senderAddress, String smtpServerAddress, String mailContent, String mailSubject) {
         this.receiverAddress = receiverAddress;
         this.senderAddress = senderAddress;
+        this.smtpServerAddress = smtpServerAddress; // domain.smtp.com --- 127.0.0.1:26615
+        this.mailContent = mailContent;
+        this.mailSubject = mailSubject;
+    }
+
+    public Mail(String receiverAddress, String senderAddress, String smtpServerAddress, String smtpServerPort, String mailContent, String mailSubject) {
+        this.receiverAddress = receiverAddress;
+        this.senderAddress = senderAddress;
         this.smtpServerAddress = smtpServerAddress;
+        this.smtpServerPort = smtpServerPort;
         this.mailContent = mailContent;
         this.mailSubject = mailSubject;
     }
@@ -42,6 +53,14 @@ public class Mail {
 
     public void setSmtpServerAddress(String smtpServerAddress) {
         this.smtpServerAddress = smtpServerAddress;
+    }
+
+    public String getSmtpServerPort() {
+        return smtpServerPort;
+    }
+
+    public void setSmtpServerPort(String smtpServerPort) {
+        this.smtpServerPort = smtpServerPort;
     }
 
     public String getMailContent() {
