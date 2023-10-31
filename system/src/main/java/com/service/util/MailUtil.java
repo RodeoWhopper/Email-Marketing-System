@@ -15,6 +15,9 @@ public class MailUtil {
                         "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
         return stringValidator(ipPattern,str);
     }
+    public static boolean isContentValid(String fileContent){
+        return fileContent.contains("<!DOCTYPE html>");
+    }
 
     private static boolean stringValidator(String pattern,String target){
         Pattern temp = Pattern.compile(pattern);
