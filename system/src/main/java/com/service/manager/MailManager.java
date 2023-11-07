@@ -14,7 +14,7 @@ import javax.mail.internet.MimeMessage;
 public class MailManager {
 
 
-    public void sendMail(Mail mail){
+    public void sendMail(Mail mail) throws MailSenderException{
         String receiver = mail.getReceiverAddress(),
                 sender = mail.getSenderAddress(),
                 senderPassword = mail.getSenderAddressPassword(),
