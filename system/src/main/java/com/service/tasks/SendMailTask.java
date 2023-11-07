@@ -3,7 +3,7 @@ package com.service.tasks;
 import com.service.manager.MailManager;
 import com.service.model.Mail;
 
-public class SendMailTask implements Runnable{
+public class SendMailTask extends Thread {
     private Mail mail;
     private MailManager mailManager;
 
@@ -13,6 +13,9 @@ public class SendMailTask implements Runnable{
 
     @Override
     public void run() {
+        mailManager.sendMail(getMail());
+
+        //Logging
 
     }
 
