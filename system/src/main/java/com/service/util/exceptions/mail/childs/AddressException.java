@@ -1,6 +1,6 @@
 package com.service.util.exceptions.mail.childs;
 
-import com.service.util.exceptions.mail.MailBuilderException;
+import com.service.util.exceptions.mail.base.MailBuilderException;
 
 public class AddressException extends MailBuilderException {
     public AddressException() {
