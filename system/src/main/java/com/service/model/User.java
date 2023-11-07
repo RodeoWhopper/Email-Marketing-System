@@ -41,8 +41,7 @@ public class User {
     private ArrayList<PurchaseMeta> purchaseMeta;
 
 
-    public User(int id, String name, String surname, String emailAddress, Date lastPurchaseDate, ArrayList<PurchaseMeta> purchaseMeta) {
-        this.id = id;
+    public User(String name, String surname, String emailAddress, Date lastPurchaseDate, ArrayList<PurchaseMeta> purchaseMeta) {
         this.name = name;
         this.surname = surname;
         this.emailAddress = emailAddress;
