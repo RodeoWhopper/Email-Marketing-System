@@ -7,5 +7,5 @@ public interface DataAccess<E> {
 
     public List<E> getAll();
 
-
+    public void update(E e);
 }
