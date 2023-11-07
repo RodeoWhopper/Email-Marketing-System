@@ -4,22 +4,25 @@ import com.service.manager.UserManager;
 import com.service.model.Mail;
 import com.service.model.User;
 import com.service.util.enums.Topic;
+import com.service.util.exceptions.other.SynchronizationException;
 import com.service.util.other.JsonUtil;
 import com.service.util.other.UserUtil;
 import com.service.util.builders.conc.MailBuilder;
 import com.service.util.enums.Datum;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class DataControlTask extends Thread {
 
-    private UserManager userManager;
+    private static UserManager userManager;
     private static MailBuilder mailBuilder;
 
     @Override
     public void run() {
-        List<User> userList = this.userManager.getAll(), fiveDays, thirtyDays;
+        List<User> userList = userManager.getAll(), fiveDays, thirtyDays;
 
         fiveDays = userList.stream()
                 .filter(user -> UserUtil.checkForDate(user) == Datum.MORE_THAN_5)
@@ -31,8 +34,6 @@ public class DataControlTask extends Thread {
 
         sendEmailsToUsersInList(fiveDays, Topic.FIVE_DAYS);
         sendEmailsToUsersInList(thirtyDays, Topic.THIRTY_DAYS);
-
-
 
     }
 
@@ -49,9 +50,23 @@ public class DataControlTask extends Thread {
             Mail mail = mailBuilder.build(receiver,sender,password,smtpServer,smtpPort,topic.name());
 
             SendMailTask sendMailTask = new SendMailTask(mail);
-            sendMailTask.run();
+            sendMailTask.start();
+
+            try {
+                sendMailTask.join();
+            } catch (InterruptedException e) {
+                throw new SynchronizationException();
+            }
+
+            updateUser(user);
 
         });
+    }
+
+    private static void updateUser(User user){
+        LocalDate now = LocalDate.now();
+        user.setLastPurchaseDate(Date.valueOf(now));
+        userManager.update(user);
     }
 
 
