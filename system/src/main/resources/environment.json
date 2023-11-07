@@ -1,0 +1,10 @@
+{
+    "smtp":{
+        "address":"smtp.gmail.com",
+        "port":"587"
+    },
+    "email-account": {
+        "username": "",
+        "password": ""
+    }
+}
