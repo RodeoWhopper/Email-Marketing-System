@@ -1,11 +1,11 @@
 package com.service.util.exceptions.file;
 
-public class ReadFileException extends RuntimeException{
-    public ReadFileException() {
+public class ReadHtmlFileException extends RuntimeException{
+    public ReadHtmlFileException() {
         super("Something went wrong on reading file from a HTML page");
     }
 
-    public ReadFileException(String message) {
+    public ReadHtmlFileException(String message) {
         super(message);
     }
 }
