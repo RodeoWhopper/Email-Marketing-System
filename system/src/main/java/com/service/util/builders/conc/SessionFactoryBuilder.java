@@ -1,7 +1,7 @@
 package com.service.util.builders.conc;
 
 import com.service.util.builders.Builder;
-import com.service.util.exceptions.InitializerException;
+import com.service.util.exceptions.other.InitializerException;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
