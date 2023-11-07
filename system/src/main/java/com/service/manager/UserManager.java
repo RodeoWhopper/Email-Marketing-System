@@ -20,4 +20,8 @@ public class UserManager {
         return this.dataAccess.getAll();
     }
 
+    public void update(User user){
+        this.dataAccess.update(user);
+    }
+
 }
