@@ -1,4 +1,4 @@
-package com.service.util.exceptions.mail;
+package com.service.util.exceptions.mail.base;
 
 public class MailBuilderException extends RuntimeException{
     public MailBuilderException() {
