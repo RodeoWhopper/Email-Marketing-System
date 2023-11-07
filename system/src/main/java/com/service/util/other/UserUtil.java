@@ -1,4 +1,4 @@
-package com.service.util;
+package com.service.util.other;
 
 import com.service.model.User;
 import com.service.util.enums.Datum;
